@@ -32,6 +32,132 @@
   background: #fff1ea;
 }
 
+.favorite-card {
+  margin-top: 24rpx;
+  padding: 26rpx;
+  border-radius: 16rpx;
+  background: #ffffff;
+  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.1);
+}
+
+.favorite-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.favorite-title {
+  color: #3d2f2f;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.favorite-desc {
+  margin-top: 8rpx;
+  color: #8b6b63;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.favorite-status {
+  flex-shrink: 0;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #b68a7e;
+  font-size: 22rpx;
+  background: #fff8f0;
+}
+
+.favorite-status.saved {
+  color: #8a6400;
+  background: rgba(255, 215, 0, 0.24);
+}
+
+.date-picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22rpx;
+  padding: 22rpx;
+  border: 2rpx solid #fff1ea;
+  border-radius: 16rpx;
+  background: #fffaf6;
+}
+
+.date-label {
+  color: #b68a7e;
+  font-size: 23rpx;
+}
+
+.date-value {
+  margin-top: 8rpx;
+  color: #3d2f2f;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.date-arrow {
+  flex-shrink: 0;
+  color: #ff6b6b;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.reminder-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin-top: 18rpx;
+  padding: 18rpx 20rpx;
+  border-radius: 12rpx;
+  color: #6f5550;
+  font-size: 24rpx;
+  background: #fffdf7;
+}
+
+.favorite-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 22rpx;
+}
+
+.favorite-save-button,
+.favorite-remove-button {
+  min-height: 76rpx;
+  margin: 0;
+  border: 0;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  line-height: 76rpx;
+}
+
+.favorite-save-button::after,
+.favorite-remove-button::after {
+  border: 0;
+}
+
+.favorite-save-button {
+  flex: 1;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+}
+
+.favorite-remove-button {
+  flex: 0 0 180rpx;
+  color: #ff6b6b;
+  background: #fff1ea;
+}
+
+.favorite-note {
+  margin-top: 16rpx;
+  color: #b68a7e;
+  font-size: 22rpx;
+  line-height: 1.6;
+}
+
 .match-note {
   margin-top: 22rpx;
   padding: 20rpx 24rpx;

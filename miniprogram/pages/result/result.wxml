@@ -11,6 +11,50 @@
     <view class="selected-chip">{{selectedBudgetText || '预算'}}</view>
   </view>
 
+  <view class="favorite-card">
+    <view class="favorite-header">
+      <view>
+        <view class="favorite-title">收藏这组推荐</view>
+        <view class="favorite-desc">选择计划送礼日期，本地记录提前 7 天提醒。</view>
+      </view>
+      <view class="favorite-status {{favoriteSaved ? 'saved' : ''}}">
+        {{favoriteSaved ? '已收藏' : '未收藏'}}
+      </view>
+    </view>
+
+    <picker mode="date" value="{{eventDate}}" start="{{todayDate}}" bindchange="handleEventDateChange">
+      <view class="date-picker-row">
+        <view>
+          <view class="date-label">计划送礼日期</view>
+          <view class="date-value">{{eventDate}}</view>
+        </view>
+        <view class="date-arrow">修改 ›</view>
+      </view>
+    </picker>
+
+    <view class="reminder-row">
+      <text>提醒日期</text>
+      <text>{{reminderDate}}（默认提前 7 天）</text>
+    </view>
+
+    <view class="favorite-actions">
+      <button class="favorite-save-button" bindtap="saveFavoriteReminder">
+        {{favoriteSaved ? '更新提醒' : '收藏并提醒'}}
+      </button>
+      <button
+        wx:if="{{favoriteSaved}}"
+        class="favorite-remove-button"
+        bindtap="removeFavoriteReminder"
+      >
+        取消收藏
+      </button>
+    </view>
+
+    <view class="favorite-note">
+      已本地保存 {{favoriteCount}} 条收藏提醒；数据仅保存在当前设备，不会上传服务器。
+    </view>
+  </view>
+
   <view class="match-note">{{matchNote}}</view>
 
   <view class="gift-list" wx:if="{{recommendations.length}}">
