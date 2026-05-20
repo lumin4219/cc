@@ -50,18 +50,24 @@
 }
 
 .scene-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 22rpx;
 }
 
 .scene-card {
+  width: 48.4%;
   min-height: 180rpx;
+  margin-top: 22rpx;
   padding: 26rpx 22rpx;
   border-radius: 16rpx;
   background: #ffffff;
   box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.12);
+}
+
+.scene-card:nth-child(-n + 2) {
+  margin-top: 0;
 }
 
 .scene-card:active {
