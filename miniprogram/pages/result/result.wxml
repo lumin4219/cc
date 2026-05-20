@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="page-title">推荐结果</view>
+  <view class="page-subtitle">
+    已选：{{selectedScene || '场景'}} / {{selectedRecipient || '收礼人'}} / {{selectedBudget || '预算'}}
+  </view>
+
+  <view class="card">
+    <view class="placeholder-title">礼物推荐卡片</view>
+    <view class="placeholder-text">下一步会从本地 gifts.json 筛选 3-8 个礼物，并支持展开查看寓意、禁忌和购买建议。</view>
+  </view>
+
+  <button class="primary-button" open-type="share">
+    分享给朋友求助
+  </button>
+
+  <navigator class="secondary-link" open-type="redirect" url="/pages/index/index">
+    重新选择
+  </navigator>
+</view>

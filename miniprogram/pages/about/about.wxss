@@ -1,0 +1,12 @@
+.section-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #3d2f2f;
+}
+
+.section-text {
+  margin-top: 14rpx;
+  color: #8b6b63;
+  font-size: 26rpx;
+  line-height: 1.7;
+}

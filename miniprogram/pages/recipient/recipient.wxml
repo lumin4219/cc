@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="page-title">选择收礼人</view>
+  <view class="page-subtitle">
+    已选场景：{{selectedScene || '待选择'}}
+  </view>
+
+  <view class="card">
+    <view class="placeholder-title">收礼人选择</view>
+    <view class="placeholder-text">下一步会按恋人伴侣、长辈、朋友、晚辈、其他进行分组选项展示。</view>
+  </view>
+
+  <navigator class="primary-button" url="/pages/budget/budget">
+    进入预算选择
+  </navigator>
+</view>

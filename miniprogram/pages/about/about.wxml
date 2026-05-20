@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="page-title">关于送了莫</view>
+  <view class="page-subtitle">一个纯工具型礼物推荐小程序。</view>
+
+  <view class="card">
+    <view class="section-title">使用说明</view>
+    <view class="section-text">选择场景、收礼人和预算后，系统会根据本地礼物数据给出推荐灵感。</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">免责声明</view>
+    <view class="section-text">推荐仅供参考，价格可能随时间和渠道变化，请结合实际情况判断。</view>
+  </view>
+</view>
