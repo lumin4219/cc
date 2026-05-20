@@ -1,12 +1,149 @@
-.placeholder-title {
-  font-size: 32rpx;
-  font-weight: 700;
-  color: #3d2f2f;
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 36rpx 32rpx;
+  border-radius: 28rpx;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  box-shadow: 0 14rpx 32rpx rgba(255, 107, 107, 0.22);
 }
 
-.placeholder-text {
-  margin-top: 14rpx;
-  color: #8b6b63;
+.app-name {
+  font-size: 46rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.app-slogan {
+  margin-top: 12rpx;
+  font-size: 27rpx;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.about-entry {
+  flex-shrink: 0;
+  padding: 10rpx 18rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.64);
+  border-radius: 999rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 36rpx;
+}
+
+.section-title {
+  color: #2f2525;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.section-tip {
+  color: #b68a7e;
+  font-size: 24rpx;
+}
+
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22rpx;
+  margin-top: 22rpx;
+}
+
+.scene-card {
+  min-height: 180rpx;
+  padding: 26rpx 22rpx;
+  border-radius: 16rpx;
+  background: #ffffff;
+  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.12);
+}
+
+.scene-card:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.scene-icon {
+  font-size: 46rpx;
+  line-height: 1;
+}
+
+.scene-name {
+  margin-top: 18rpx;
+  color: #3d2f2f;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.scene-desc {
+  margin-top: 8rpx;
+  color: #9a7770;
   font-size: 26rpx;
-  line-height: 1.6;
+}
+
+.festival-card {
+  margin-top: 34rpx;
+  padding: 28rpx;
+  border: 2rpx solid rgba(255, 215, 0, 0.34);
+  border-radius: 16rpx;
+  background: linear-gradient(180deg, #fffdf7, #ffffff);
+  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.1);
+}
+
+.festival-title {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  color: #3d2f2f;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.festival-list {
+  margin-top: 20rpx;
+}
+
+.festival-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  border-top: 1rpx solid #f7e7dc;
+}
+
+.festival-item:first-child {
+  border-top: 0;
+}
+
+.festival-main {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.festival-icon {
+  margin-right: 12rpx;
+  font-size: 34rpx;
+}
+
+.festival-name {
+  color: #4a3734;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.festival-days {
+  flex-shrink: 0;
+  margin-left: 18rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #8a6400;
+  font-size: 24rpx;
+  background: rgba(255, 215, 0, 0.22);
 }

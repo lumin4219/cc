@@ -1,17 +1,47 @@
 <view class="page">
-  <view class="page-title">{{title}}</view>
-  <view class="page-subtitle">{{slogan}}</view>
-
-  <view class="card">
-    <view class="placeholder-title">首页 - 场景选择</view>
-    <view class="placeholder-text">下一步会在这里搭建 2 列场景卡片网格和节日倒计时横幅。</view>
+  <view class="hero">
+    <view>
+      <view class="app-name">{{title}}</view>
+      <view class="app-slogan">{{slogan}}</view>
+    </view>
+    <navigator class="about-entry" url="/pages/about/about">关于</navigator>
   </view>
 
-  <navigator class="primary-button" url="/pages/recipient/recipient">
-    进入收礼人选择
-  </navigator>
+  <view class="section-header">
+    <view class="section-title">先选送礼场景</view>
+    <view class="section-tip">第 1 步 / 共 3 步</view>
+  </view>
 
-  <navigator class="secondary-link" url="/pages/about/about">
-    关于送了莫
-  </navigator>
+  <view class="scene-grid">
+    <view
+      class="scene-card"
+      wx:for="{{scenes}}"
+      wx:key="name"
+      data-scene="{{item.name}}"
+      bindtap="handleSceneTap"
+    >
+      <view class="scene-icon">{{item.icon}}</view>
+      <view class="scene-name">{{item.name}}</view>
+      <view class="scene-desc">{{item.desc}}</view>
+    </view>
+  </view>
+
+  <view class="festival-card">
+    <view class="festival-title">
+      <text>🎀</text>
+      <text>最近节日提醒</text>
+    </view>
+    <view class="festival-list">
+      <view class="festival-item" wx:for="{{upcomingFestivals}}" wx:key="name">
+        <view class="festival-main">
+          <text class="festival-icon">{{item.icon}}</text>
+          <text class="festival-name">{{item.name}}</text>
+        </view>
+        <view class="festival-days">
+          <text wx:if="{{item.daysLeft === 0}}">就是今天</text>
+          <text wx:else>还有 {{item.daysLeft}} 天</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

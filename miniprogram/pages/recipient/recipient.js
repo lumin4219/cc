@@ -4,8 +4,10 @@ Page({
   },
 
   onLoad(options) {
+    const selectedScene = options.scene ? decodeURIComponent(options.scene) : ''
+
     this.setData({
-      selectedScene: options.scene || ''
+      selectedScene
     })
   },
 
