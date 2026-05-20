@@ -1,12 +1,124 @@
-.placeholder-title {
-  font-size: 32rpx;
-  font-weight: 700;
-  color: #3d2f2f;
+.step-card {
+  padding: 34rpx 32rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(135deg, #fff1ea, #ffffff);
+  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.1);
 }
 
-.placeholder-text {
+.step-label {
+  margin-bottom: 12rpx;
+  color: #ff6b6b;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.selected-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24rpx;
+  padding: 24rpx 26rpx;
+  border: 2rpx solid rgba(255, 107, 107, 0.16);
+  border-radius: 16rpx;
+  background: #ffffff;
+  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.08);
+}
+
+.selected-info {
+  min-width: 0;
+}
+
+.selected-label {
+  color: #b68a7e;
+  font-size: 24rpx;
+}
+
+.selected-value {
+  margin-top: 8rpx;
+  color: #3d2f2f;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.change-button {
+  flex-shrink: 0;
+  min-width: 152rpx;
+  margin: 0 0 0 20rpx;
+  padding: 0 22rpx;
+  border: 0;
+  border-radius: 999rpx;
+  color: #ff6b6b;
+  font-size: 24rpx;
+  line-height: 58rpx;
+  background: #fff1ea;
+}
+
+.change-button::after {
+  border: 0;
+}
+
+.group-list {
+  margin-top: 30rpx;
+}
+
+.group-card {
+  margin-top: 24rpx;
+  padding: 26rpx;
+  border-radius: 16rpx;
+  background: #ffffff;
+  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.1);
+}
+
+.group-card:first-child {
+  margin-top: 0;
+}
+
+.group-title {
+  display: flex;
+  align-items: center;
+  color: #3d2f2f;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.group-icon {
+  margin-right: 12rpx;
+  font-size: 34rpx;
+}
+
+.recipient-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18rpx;
+  margin-top: 22rpx;
+}
+
+.recipient-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 128rpx;
+  padding: 18rpx 10rpx;
+  border: 2rpx solid #fff1ea;
+  border-radius: 16rpx;
+  background: #fffaf6;
+}
+
+.recipient-option:active {
+  transform: scale(0.97);
+  border-color: #ff8e8e;
+  background: #fff1ea;
+}
+
+.recipient-icon {
+  font-size: 38rpx;
+  line-height: 1;
+}
+
+.recipient-name {
   margin-top: 14rpx;
-  color: #8b6b63;
+  color: #4a3734;
   font-size: 26rpx;
-  line-height: 1.6;
+  font-weight: 600;
 }

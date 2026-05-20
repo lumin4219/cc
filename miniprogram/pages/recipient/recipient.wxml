@@ -1,15 +1,40 @@
 <view class="page">
-  <view class="page-title">选择收礼人</view>
-  <view class="page-subtitle">
-    已选场景：{{selectedScene || '待选择'}}
+  <view class="step-card">
+    <view>
+      <view class="step-label">第 2 步 / 共 3 步</view>
+      <view class="page-title">选择收礼人</view>
+      <view class="page-subtitle">不同关系适合的心意不一样</view>
+    </view>
   </view>
 
-  <view class="card">
-    <view class="placeholder-title">收礼人选择</view>
-    <view class="placeholder-text">下一步会按恋人伴侣、长辈、朋友、晚辈、其他进行分组选项展示。</view>
+  <view class="selected-card">
+    <view class="selected-info">
+      <view class="selected-label">已选场景</view>
+      <view class="selected-value">{{selectedScene || '待选择'}}</view>
+    </view>
+    <button class="change-button" bindtap="goBackToScene">返回修改</button>
   </view>
 
-  <navigator class="primary-button" url="/pages/budget/budget">
-    进入预算选择
-  </navigator>
+  <view class="group-list">
+    <view class="group-card" wx:for="{{recipientGroups}}" wx:key="title">
+      <view class="group-title">
+        <text class="group-icon">{{item.icon}}</text>
+        <text>{{item.title}}</text>
+      </view>
+
+      <view class="recipient-grid">
+        <view
+          class="recipient-option"
+          wx:for="{{item.people}}"
+          wx:for-item="person"
+          wx:key="name"
+          data-recipient="{{person.name}}"
+          bindtap="handleRecipientTap"
+        >
+          <text class="recipient-icon">{{person.icon}}</text>
+          <text class="recipient-name">{{person.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

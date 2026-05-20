@@ -5,9 +5,12 @@ Page({
   },
 
   onLoad(options) {
+    const selectedScene = options.scene ? decodeURIComponent(options.scene) : ''
+    const selectedRecipient = options.recipient ? decodeURIComponent(options.recipient) : ''
+
     this.setData({
-      selectedScene: options.scene || '',
-      selectedRecipient: options.recipient || ''
+      selectedScene,
+      selectedRecipient
     })
   },
 
