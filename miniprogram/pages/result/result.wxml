@@ -1,19 +1,96 @@
 <view class="page">
-  <view class="page-title">推荐结果</view>
-  <view class="page-subtitle">
-    已选：{{selectedScene || '场景'}} / {{selectedRecipient || '收礼人'}} / {{selectedBudget || '预算'}}
+  <view class="result-hero">
+    <view class="hero-label">送了莫推荐结果</view>
+    <view class="page-title">为你找到 {{recommendationCount}} 个礼物灵感</view>
+    <view class="page-subtitle">点击卡片可展开查看寓意、注意事项和购买建议。</view>
   </view>
 
-  <view class="card">
-    <view class="placeholder-title">礼物推荐卡片</view>
-    <view class="placeholder-text">下一步会从本地 gifts.json 筛选 3-8 个礼物，并支持展开查看寓意、禁忌和购买建议。</view>
+  <view class="selected-card">
+    <view class="selected-chip">{{selectedScene || '场景'}}</view>
+    <view class="selected-chip">{{selectedRecipient || '收礼人'}}</view>
+    <view class="selected-chip">{{selectedBudgetText || '预算'}}</view>
   </view>
 
-  <button class="primary-button" open-type="share">
-    分享给朋友求助
-  </button>
+  <view class="match-note">{{matchNote}}</view>
 
-  <navigator class="secondary-link" open-type="redirect" url="/pages/index/index">
-    重新选择
-  </navigator>
+  <view class="gift-list" wx:if="{{recommendations.length}}">
+    <view
+      class="gift-card"
+      wx:for="{{recommendations}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="toggleGiftDetail"
+    >
+      <view class="gift-card-header">
+        <view class="gift-main">
+          <view class="gift-title-row">
+            <text class="gift-name">{{item.name}}</text>
+            <text class="match-badge">{{item.matchLabel}}</text>
+          </view>
+          <view class="gift-meta">
+            <text>{{item.category}}</text>
+            <text class="dot">·</text>
+            <text>参考价：{{item.priceText}}</text>
+          </view>
+        </view>
+        <view class="expand-icon">{{item.expanded ? '收起' : '展开'}}</view>
+      </view>
+
+      <view class="rating-row">
+        <text class="stars">{{item.starText}}</text>
+        <text class="score-text">适合指数 {{item.score}}/5</text>
+      </view>
+
+      <view class="reason">{{item.reason}}</view>
+
+      <view class="gift-detail" wx:if="{{item.expanded}}">
+        <view class="detail-row">
+          <view class="detail-label">礼物寓意</view>
+          <view class="detail-text">{{item.meaning}}</view>
+        </view>
+        <view class="detail-row">
+          <view class="detail-label">注意事项</view>
+          <view class="detail-text">{{item.taboo}}</view>
+        </view>
+        <view class="detail-row">
+          <view class="detail-label">购买建议</view>
+          <view class="detail-text">{{item.tips}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-card" wx:else>
+    <view class="empty-icon">🎁</view>
+    <view class="empty-title">暂时没有合适推荐</view>
+    <view class="empty-text">可以返回重新选择场景、收礼人或预算。</view>
+  </view>
+
+  <view class="flower-section" wx:if="{{flowerGuide}}">
+    <view class="section-title">
+      <text>💐</text>
+      <text>{{flowerGuide.scene}}鲜花和花语</text>
+    </view>
+    <view class="flower-summary">{{flowerGuide.summary}}</view>
+
+    <view class="flower-list">
+      <view class="flower-card" wx:for="{{flowerGuide.flowers}}" wx:key="id">
+        <view class="flower-top">
+          <view>
+            <view class="flower-name">{{item.name}}</view>
+            <view class="flower-color">{{item.color}}</view>
+          </view>
+          <view class="recipient-badge" wx:if="{{item.isRecipientMatched}}">适合{{selectedRecipient}}</view>
+        </view>
+        <view class="flower-language">花语：{{item.language}}</view>
+        <view class="flower-tip">建议：{{item.tips}}</view>
+        <view class="flower-taboo">注意：{{item.taboo}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-bar">
+    <button class="share-button" open-type="share">分享给朋友求助</button>
+    <button class="restart-button" bindtap="restartSelection">重新选择</button>
+  </view>
 </view>
