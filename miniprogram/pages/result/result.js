@@ -6,10 +6,14 @@ Page({
   },
 
   onLoad(options) {
+    const selectedScene = options.scene ? decodeURIComponent(options.scene) : ''
+    const selectedRecipient = options.recipient ? decodeURIComponent(options.recipient) : ''
+    const selectedBudget = options.budget ? decodeURIComponent(options.budget) : ''
+
     this.setData({
-      selectedScene: options.scene || '',
-      selectedRecipient: options.recipient || '',
-      selectedBudget: options.budget || ''
+      selectedScene,
+      selectedRecipient,
+      selectedBudget
     })
   },
 
