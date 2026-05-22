@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/recipient/recipient",
+    "pages/budget/budget",
+    "pages/result/result",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarTitleText": "送了莫",
+    "navigationBarBackgroundColor": "#FF6B6B",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFF8F0",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

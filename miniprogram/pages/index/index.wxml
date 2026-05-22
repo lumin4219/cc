@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="hero">
+    <view>
+      <view class="app-name">{{title}}</view>
+      <view class="app-slogan">{{slogan}}</view>
+    </view>
+    <navigator class="about-entry" url="/pages/about/about">关于</navigator>
+  </view>
+
+  <view class="section-header">
+    <view class="section-title">先选送礼场景</view>
+    <view class="section-tip">第 1 步 / 共 3 步</view>
+  </view>
+
+  <view class="scene-grid">
+    <view
+      class="scene-card"
+      wx:for="{{scenes}}"
+      wx:key="name"
+      data-scene="{{item.name}}"
+      bindtap="handleSceneTap"
+    >
+      <view class="scene-icon">{{item.icon}}</view>
+      <view class="scene-name">{{item.name}}</view>
+      <view class="scene-desc">{{item.desc}}</view>
+    </view>
+  </view>
+
+  <view class="festival-card">
+    <view class="festival-title">
+      <text>🎀</text>
+      <text>最近节日提醒</text>
+    </view>
+    <view class="festival-list">
+      <view class="festival-item" wx:for="{{upcomingFestivals}}" wx:key="name">
+        <view class="festival-main">
+          <text class="festival-icon">{{item.icon}}</text>
+          <text class="festival-name">{{item.name}}</text>
+        </view>
+        <view class="festival-days">
+          <text wx:if="{{item.daysLeft === 0}}">就是今天</text>
+          <text wx:else>还有 {{item.daysLeft}} 天</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="step-card">
+    <view class="step-label">第 3 步 / 共 3 步</view>
+    <view class="page-title">选择预算</view>
+    <view class="page-subtitle">按大致预算筛选更合适的礼物灵感</view>
+  </view>
+
+  <view class="selected-card">
+    <view class="selected-item">
+      <view class="selected-label">场景</view>
+      <view class="selected-value">{{selectedScene || '待选择'}}</view>
+    </view>
+    <view class="divider"></view>
+    <view class="selected-item">
+      <view class="selected-label">收礼人</view>
+      <view class="selected-value">{{selectedRecipient || '待选择'}}</view>
+    </view>
+    <button class="change-button" bindtap="goBackToRecipient">返回修改</button>
+  </view>
+
+  <view class="budget-list">
+    <view
+      class="budget-card"
+      wx:for="{{budgetOptions}}"
+      wx:key="value"
+      data-budget="{{item.value}}"
+      bindtap="handleBudgetTap"
+    >
+      <view class="budget-icon">{{item.icon}}</view>
+      <view class="budget-content">
+        <view class="budget-title">{{item.title}}</view>
+        <view class="budget-desc">{{item.desc}}</view>
+        <view class="budget-examples">{{item.examples}}</view>
+      </view>
+      <view class="budget-arrow">›</view>
+    </view>
+  </view>
+</view>
