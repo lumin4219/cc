@@ -1,0 +1,96 @@
+.step-card,
+.form-card {
+  padding: 34rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.44);
+  border-radius: 36rpx;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18rpx 42rpx rgba(255, 95, 162, 0.14);
+}
+
+.step-label {
+  display: inline-flex;
+  margin-bottom: 12rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #8a4a00;
+  font-size: 24rpx;
+  font-weight: 800;
+  background: #ffe37a;
+}
+
+.form-card {
+  margin-top: 28rpx;
+}
+
+.field-label {
+  margin: 28rpx 0 14rpx;
+  color: #321d2c;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.field-label:first-child {
+  margin-top: 0;
+}
+
+.form-input {
+  min-height: 86rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.42);
+  border-radius: 26rpx;
+  color: #432236;
+  font-size: 27rpx;
+  line-height: 86rpx;
+  background: #fff8df;
+}
+
+.toggle-row,
+.tag-list,
+.budget-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toggle-item,
+.tag,
+.budget-option {
+  margin: 12rpx 12rpx 0 0;
+  padding: 16rpx 22rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.42);
+  border-radius: 999rpx;
+  color: #8f5d73;
+  font-size: 25rpx;
+  font-weight: 800;
+  background: #ffffff;
+}
+
+.toggle-item.active,
+.tag.active,
+.budget-option.active {
+  color: #ffffff;
+  border-color: #ff5fa2;
+  background: linear-gradient(135deg, #ff5fa2, #ff8ac0);
+  box-shadow: 0 10rpx 22rpx rgba(255, 95, 162, 0.22);
+}
+
+.budget-option {
+  width: 31.5%;
+  margin-right: 2.7%;
+  text-align: center;
+}
+
+.budget-option:nth-child(3n) {
+  margin-right: 0;
+}
+
+.submit-button {
+  height: 92rpx;
+  margin-top: 34rpx;
+  border-radius: 999rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 900;
+  line-height: 92rpx;
+  background: linear-gradient(135deg, #ff5fa2, #ff8ac0);
+  box-shadow: 0 14rpx 30rpx rgba(255, 95, 162, 0.28);
+}

@@ -388,12 +388,32 @@
   margin-top: 22rpx;
 }
 
+.flower-scroll {
+  width: 100%;
+  margin-top: 22rpx;
+  white-space: nowrap;
+}
+
+.flower-row {
+  display: flex;
+}
+
 .flower-card {
   margin-top: 18rpx;
   padding: 22rpx;
   border: 2rpx solid rgba(255, 216, 77, 0.34);
   border-radius: 24rpx;
   background: linear-gradient(180deg, #fffaff, #fff8df);
+}
+
+.flower-card.horizontal {
+  display: inline-flex;
+  flex-direction: column;
+  width: 520rpx;
+  min-height: 260rpx;
+  margin-top: 0;
+  margin-right: 20rpx;
+  white-space: normal;
 }
 
 .flower-card:first-child {

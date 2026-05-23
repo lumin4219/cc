@@ -1,79 +1,79 @@
 const recipientGroups = [
   {
-    title: '恋人伴侣',
+    title: '恋人',
     icon: '🌹',
-    people: [
-      { name: '男友', icon: '🤵' },
-      { name: '女友', icon: '👩' },
-      { name: '老公', icon: '💍' },
-      { name: '老婆', icon: '🎀' }
-    ]
+    people: ['男友', '女友', '老公', '老婆']
   },
   {
     title: '长辈',
     icon: '👨‍👩‍👧‍👦',
-    people: [
-      { name: '妈妈', icon: '💐' },
-      { name: '爸爸', icon: '👔' },
-      { name: '爷爷', icon: '🍵' },
-      { name: '奶奶', icon: '🧣' },
-      { name: '岳父', icon: '📚' },
-      { name: '岳母', icon: '🌷' }
-    ]
+    people: ['妈妈', '爸爸', '爷爷', '奶奶', '岳父', '岳母']
   },
   {
     title: '朋友',
     icon: '🎁',
-    people: [
-      { name: '闺蜜', icon: '🎀' },
-      { name: '兄弟', icon: '🎮' },
-      { name: '同事', icon: '☕' }
-    ]
-  },
-  {
-    title: '晚辈',
-    icon: '👶',
-    people: [
-      { name: '儿子', icon: '🚗' },
-      { name: '女儿', icon: '🧸' },
-      { name: '侄子', icon: '🧩' },
-      { name: '侄女', icon: '🍭' }
-    ]
+    people: ['闺蜜', '兄弟', '同事']
   },
   {
     title: '其他',
     icon: '📚',
-    people: [
-      { name: '老师', icon: '🍎' },
-      { name: '领导', icon: '💼' },
-      { name: '客户', icon: '🤝' }
-    ]
+    people: ['老师', '领导', '客户', '儿子', '女儿', '侄子', '侄女']
   }
 ]
+
+const CONTACT_STORAGE_KEY = 'songlemo_common_contacts'
+
+function getCommonContacts() {
+  const contacts = wx.getStorageSync(CONTACT_STORAGE_KEY)
+  return Array.isArray(contacts) ? contacts.slice(0, 6) : []
+}
 
 Page({
   data: {
     selectedScene: '',
+    eventName: '',
+    eventDate: '',
+    eventType: '',
+    commonContacts: [],
     recipientGroups
   },
 
   onLoad(options) {
     const selectedScene = options.scene ? decodeURIComponent(options.scene) : ''
+    const eventName = options.eventName ? decodeURIComponent(options.eventName) : selectedScene
+    const eventDate = options.eventDate ? decodeURIComponent(options.eventDate) : ''
+    const eventType = options.eventType ? decodeURIComponent(options.eventType) : ''
 
     this.setData({
-      selectedScene
+      selectedScene,
+      eventName,
+      eventDate,
+      eventType,
+      commonContacts: getCommonContacts()
     })
   },
 
   handleRecipientTap(event) {
-    const { recipient } = event.currentTarget.dataset
+    const { recipient, name } = event.currentTarget.dataset
 
     if (!recipient) {
       return
     }
 
+    this.goProfile(recipient, name || '')
+  },
+
+  goProfile(recipient, name) {
+    const query = [
+      `scene=${encodeURIComponent(this.data.selectedScene)}`,
+      `eventName=${encodeURIComponent(this.data.eventName)}`,
+      `eventDate=${encodeURIComponent(this.data.eventDate)}`,
+      `eventType=${encodeURIComponent(this.data.eventType)}`,
+      `recipient=${encodeURIComponent(recipient)}`,
+      `name=${encodeURIComponent(name)}`
+    ].join('&')
     wx.navigateTo({
-      url: `/pages/budget/budget?scene=${encodeURIComponent(this.data.selectedScene)}&recipient=${encodeURIComponent(recipient)}`
+      url: `/pages/profile/profile?${query}`
     })
   },
 

@@ -80,6 +80,22 @@
   margin-top: 30rpx;
 }
 
+.contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 18rpx;
+}
+
+.contact-pill {
+  margin: 12rpx 12rpx 0 0;
+  padding: 14rpx 18rpx;
+  border-radius: 999rpx;
+  color: #ff4f99;
+  font-size: 24rpx;
+  font-weight: 800;
+  background: #fff0b8;
+}
+
 .group-card {
   margin-top: 24rpx;
   padding: 28rpx;

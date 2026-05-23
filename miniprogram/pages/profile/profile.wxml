@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="step-card">
+    <view class="step-label">第 3 步 / 共 3 步</view>
+    <view class="page-title">填写 TA 的资料</view>
+    <view class="page-subtitle">{{eventName}} · {{recipient}}</view>
+  </view>
+
+  <view class="form-card">
+    <view class="field-label">姓名/昵称</view>
+    <input class="form-input" placeholder="例如：小莫、妈妈、李老师" value="{{name}}" bindinput="handleNameInput" />
+
+    <view class="field-label">性别</view>
+    <view class="toggle-row">
+      <view class="toggle-item {{gender === '女' ? 'active' : ''}}" data-gender="女" bindtap="handleGenderTap">女生</view>
+      <view class="toggle-item {{gender === '男' ? 'active' : ''}}" data-gender="男" bindtap="handleGenderTap">男生</view>
+      <view class="toggle-item {{gender === '其他' ? 'active' : ''}}" data-gender="其他" bindtap="handleGenderTap">不限定</view>
+    </view>
+
+    <view class="field-label">生日/纪念日</view>
+    <picker mode="date" value="{{birthday}}" bindchange="handleBirthdayChange">
+      <view class="form-input date-input">{{birthday || '请选择日期'}}</view>
+    </picker>
+
+    <view class="field-label">喜好标签</view>
+    <view class="tag-list">
+      <view
+        class="tag {{item.selected ? 'active' : ''}}"
+        wx:for="{{preferenceTags}}"
+        wx:key="name"
+        data-tag="{{item.name}}"
+        bindtap="handlePreferenceTap"
+      >
+        {{item.name}}
+      </view>
+    </view>
+
+    <view class="field-label">预算档位</view>
+    <view class="budget-grid">
+      <view
+        class="budget-option {{budget === item.value ? 'active' : ''}}"
+        wx:for="{{budgetOptions}}"
+        wx:key="value"
+        data-budget="{{item.value}}"
+        bindtap="handleBudgetTap"
+      >
+        {{item.title}}
+      </view>
+    </view>
+  </view>
+
+  <button class="submit-button" bindtap="submitProfile">生成推荐</button>
+</view>
