@@ -1,26 +1,44 @@
 .step-card {
-  padding: 34rpx 32rpx;
-  border-radius: 28rpx;
-  background: linear-gradient(135deg, #fff1ea, #ffffff);
-  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.1);
+  position: relative;
+  overflow: hidden;
+  padding: 38rpx 34rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.44);
+  border-radius: 36rpx;
+  background: linear-gradient(135deg, #fff6fb 0%, #ffffff 54%, #fff2a8 150%);
+  box-shadow: 0 18rpx 42rpx rgba(255, 95, 162, 0.14);
+}
+
+.step-card::after {
+  position: absolute;
+  right: -52rpx;
+  top: -52rpx;
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 50%;
+  background: rgba(255, 216, 77, 0.35);
+  content: "";
 }
 
 .step-label {
+  display: inline-flex;
   margin-bottom: 12rpx;
-  color: #ff6b6b;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #8a4a00;
   font-size: 24rpx;
-  font-weight: 700;
+  font-weight: 800;
+  background: #ffe37a;
 }
 
 .selected-card {
   display: flex;
   align-items: center;
   margin-top: 24rpx;
-  padding: 24rpx 22rpx;
-  border: 2rpx solid rgba(255, 107, 107, 0.16);
-  border-radius: 16rpx;
-  background: #ffffff;
-  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.08);
+  padding: 26rpx 24rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.38);
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14rpx 34rpx rgba(255, 95, 162, 0.1);
 }
 
 .selected-item {
@@ -29,13 +47,13 @@
 }
 
 .selected-label {
-  color: #b68a7e;
+  color: #a05b76;
   font-size: 23rpx;
 }
 
 .selected-value {
   margin-top: 8rpx;
-  color: #3d2f2f;
+  color: #321d2c;
   font-size: 28rpx;
   font-weight: 700;
   overflow: hidden;
@@ -47,7 +65,7 @@
   width: 1rpx;
   height: 56rpx;
   margin: 0 18rpx;
-  background: #f3ded3;
+  background: rgba(255, 216, 77, 0.44);
 }
 
 .change-button {
@@ -57,10 +75,11 @@
   padding: 0 18rpx;
   border: 0;
   border-radius: 999rpx;
-  color: #ff6b6b;
+  color: #ff4f99;
   font-size: 23rpx;
   line-height: 56rpx;
-  background: #fff1ea;
+  font-weight: 700;
+  background: #fff0b8;
 }
 
 .change-button::after {
@@ -76,10 +95,11 @@
   align-items: center;
   min-height: 148rpx;
   margin-top: 22rpx;
-  padding: 26rpx;
-  border-radius: 16rpx;
-  background: #ffffff;
-  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.1);
+  padding: 28rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.34);
+  border-radius: 30rpx;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16rpx 38rpx rgba(255, 95, 162, 0.11);
 }
 
 .budget-card:first-child {
@@ -88,7 +108,7 @@
 
 .budget-card:active {
   transform: scale(0.98);
-  background: #fffaf6;
+  background: #fff7dc;
 }
 
 .budget-icon {
@@ -100,7 +120,8 @@
   height: 88rpx;
   border-radius: 50%;
   font-size: 42rpx;
-  background: #fff1ea;
+  background: linear-gradient(135deg, #fff2a8, #ffe37a);
+  box-shadow: 0 8rpx 18rpx rgba(255, 216, 77, 0.32);
 }
 
 .budget-content {
@@ -110,27 +131,27 @@
 }
 
 .budget-title {
-  color: #3d2f2f;
+  color: #321d2c;
   font-size: 31rpx;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .budget-desc {
   margin-top: 8rpx;
-  color: #8b6b63;
+  color: #8f5d73;
   font-size: 26rpx;
 }
 
 .budget-examples {
   margin-top: 8rpx;
-  color: #c29688;
+  color: #b26985;
   font-size: 23rpx;
 }
 
 .budget-arrow {
   flex-shrink: 0;
   margin-left: 18rpx;
-  color: #ff8e8e;
+  color: #ff5fa2;
   font-size: 48rpx;
   line-height: 1;
 }

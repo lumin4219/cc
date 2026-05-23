@@ -1,10 +1,16 @@
 <view class="page">
   <view class="hero">
     <view>
+      <view class="hero-badge">AI 礼物灵感助手</view>
       <view class="app-name">{{title}}</view>
       <view class="app-slogan">{{slogan}}</view>
+      <view class="hero-tags">
+        <text>🎁 个性推荐</text>
+        <text>🌼 花语参考</text>
+      </view>
     </view>
     <navigator class="about-entry" url="/pages/about/about">关于</navigator>
+    <view class="hero-glow"></view>
   </view>
 
   <view class="section-header">

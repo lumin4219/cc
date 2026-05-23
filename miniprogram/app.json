@@ -8,9 +8,9 @@
   ],
   "window": {
     "navigationBarTitleText": "送了莫",
-    "navigationBarBackgroundColor": "#FF6B6B",
+    "navigationBarBackgroundColor": "#FF5FA2",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#FFF8F0",
+    "backgroundColor": "#FFF6FB",
     "backgroundTextStyle": "dark"
   },
   "style": "v2",
