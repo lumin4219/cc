@@ -1,114 +1,294 @@
 .hero {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 36rpx 32rpx;
-  border-radius: 28rpx;
+  padding: 42rpx 34rpx 38rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.42);
+  border-radius: 38rpx;
   color: #ffffff;
-  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-  box-shadow: 0 14rpx 32rpx rgba(255, 107, 107, 0.22);
+  background: linear-gradient(135deg, #ff5fa2 0%, #ff85bd 56%, #ffd84d 140%);
+  box-shadow: 0 24rpx 52rpx rgba(255, 95, 162, 0.3);
+}
+
+.hero::before {
+  position: absolute;
+  right: -70rpx;
+  bottom: -80rpx;
+  width: 250rpx;
+  height: 250rpx;
+  border-radius: 50%;
+  background: rgba(255, 216, 77, 0.3);
+  content: "";
+}
+
+.hero::after {
+  position: absolute;
+  right: 72rpx;
+  top: 58rpx;
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  content: "";
+}
+
+.hero-glow {
+  position: absolute;
+  left: -42rpx;
+  top: -48rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hero > view,
+.hero navigator {
+  position: relative;
+  z-index: 1;
+}
+
+.hero .hero-glow {
+  position: absolute;
+  z-index: 0;
+}
+
+.hero-badge {
+  display: inline-flex;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #8a4a00;
+  font-size: 22rpx;
+  font-weight: 800;
+  background: #ffe37a;
 }
 
 .app-name {
-  font-size: 46rpx;
-  font-weight: 700;
+  margin-top: 18rpx;
+  font-size: 58rpx;
+  font-weight: 900;
   letter-spacing: 2rpx;
+  text-shadow: 0 4rpx 14rpx rgba(151, 36, 95, 0.22);
 }
 
 .app-slogan {
   margin-top: 12rpx;
-  font-size: 27rpx;
+  font-size: 28rpx;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 26rpx;
+}
+
+.hero-tags text {
+  margin-right: 14rpx;
+  margin-top: 10rpx;
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  color: #ffffff;
+  font-size: 22rpx;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .about-entry {
   flex-shrink: 0;
-  padding: 10rpx 18rpx;
-  border: 1rpx solid rgba(255, 255, 255, 0.64);
+  padding: 12rpx 20rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.78);
   border-radius: 999rpx;
   color: #ffffff;
-  font-size: 24rpx;
-}
-
-.section-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-top: 36rpx;
-}
-
-.section-title {
-  color: #2f2525;
-  font-size: 34rpx;
+  font-size: 23rpx;
   font-weight: 700;
+  background: rgba(255, 255, 255, 0.14);
 }
 
-.section-tip {
-  color: #b68a7e;
+.calendar-card,
+.add-card {
+  margin-top: 30rpx;
+  padding: 30rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.42);
+  border-radius: 34rpx;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18rpx 42rpx rgba(255, 95, 162, 0.13);
+}
+
+.calendar-header,
+.add-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.month-button {
+  width: 72rpx;
+  height: 72rpx;
+  margin: 0;
+  border-radius: 50%;
+  color: #ff4f99;
+  font-size: 42rpx;
+  font-weight: 900;
+  line-height: 72rpx;
+  background: #fff0b8;
+}
+
+.calendar-title,
+.add-title {
+  color: #321d2c;
+  font-size: 34rpx;
+  font-weight: 900;
+  text-align: center;
+}
+
+.calendar-subtitle,
+.add-desc {
+  margin-top: 8rpx;
+  color: #9a5c75;
   font-size: 24rpx;
+  text-align: center;
 }
 
-.scene-grid {
+.week-row,
+.month-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 22rpx;
 }
 
-.scene-card {
-  width: 48.4%;
-  min-height: 180rpx;
-  margin-top: 22rpx;
-  padding: 26rpx 22rpx;
-  border-radius: 16rpx;
-  background: #ffffff;
-  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.12);
+.week-row {
+  margin-top: 28rpx;
 }
 
-.scene-card:nth-child(-n + 2) {
-  margin-top: 0;
+.week-cell,
+.day-cell {
+  width: 14.28%;
+  text-align: center;
 }
 
-.scene-card:active {
-  transform: scale(0.98);
-  opacity: 0.9;
-}
-
-.scene-icon {
-  font-size: 46rpx;
-  line-height: 1;
-}
-
-.scene-name {
-  margin-top: 18rpx;
-  color: #3d2f2f;
-  font-size: 30rpx;
+.week-cell {
+  color: #a05b76;
+  font-size: 23rpx;
   font-weight: 700;
 }
 
-.scene-desc {
-  margin-top: 8rpx;
-  color: #9a7770;
+.month-grid {
+  margin-top: 12rpx;
+}
+
+.day-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 82rpx;
+  color: #432236;
+  font-size: 27rpx;
+  font-weight: 800;
+  border-radius: 24rpx;
+}
+
+.day-cell.empty {
+  opacity: 0;
+}
+
+.day-cell.today {
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff5fa2, #ff8ac0);
+  box-shadow: 0 8rpx 18rpx rgba(255, 95, 162, 0.22);
+}
+
+.day-cell:active {
+  transform: scale(0.98);
+}
+
+.dot-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12rpx;
+  margin-top: 6rpx;
+}
+
+.dot {
+  width: 10rpx;
+  height: 10rpx;
+  margin: 0 3rpx;
+  border-radius: 50%;
+}
+
+.dot.red {
+  background: #ff4f72;
+}
+
+.dot.purple {
+  background: #9b5cff;
+}
+
+.add-title,
+.add-desc {
+  text-align: left;
+}
+
+.add-button,
+.save-button {
+  margin: 0;
+  border-radius: 999rpx;
+  color: #ffffff;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff5fa2, #ff8ac0);
+}
+
+.add-button {
+  width: 132rpx;
+  height: 64rpx;
+  font-size: 25rpx;
+  line-height: 64rpx;
+}
+
+.add-form {
+  margin-top: 24rpx;
+}
+
+.form-input,
+.date-picker {
+  min-height: 82rpx;
+  margin-top: 18rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.42);
+  border-radius: 24rpx;
+  color: #432236;
   font-size: 26rpx;
+  line-height: 82rpx;
+  background: #fff8df;
+}
+
+.save-button {
+  height: 82rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  line-height: 82rpx;
 }
 
 .festival-card {
   margin-top: 34rpx;
-  padding: 28rpx;
-  border: 2rpx solid rgba(255, 215, 0, 0.34);
-  border-radius: 16rpx;
-  background: linear-gradient(180deg, #fffdf7, #ffffff);
-  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.1);
+  padding: 30rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.55);
+  border-radius: 30rpx;
+  background: linear-gradient(135deg, #fffbe6, #ffffff 72%);
+  box-shadow: 0 18rpx 42rpx rgba(255, 95, 162, 0.12);
 }
 
 .festival-title {
   display: flex;
   align-items: center;
   gap: 12rpx;
-  color: #3d2f2f;
+  color: #321d2c;
   font-size: 30rpx;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .festival-list {
@@ -120,7 +300,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 18rpx 0;
-  border-top: 1rpx solid #f7e7dc;
+  border-top: 1rpx solid rgba(255, 216, 77, 0.34);
 }
 
 .festival-item:first-child {
@@ -139,7 +319,7 @@
 }
 
 .festival-name {
-  color: #4a3734;
+  color: #432236;
   font-size: 28rpx;
   font-weight: 600;
 }
@@ -149,7 +329,8 @@
   margin-left: 18rpx;
   padding: 8rpx 16rpx;
   border-radius: 999rpx;
-  color: #8a6400;
+  color: #8a4a00;
   font-size: 24rpx;
-  background: rgba(255, 215, 0, 0.22);
+  font-weight: 700;
+  background: #ffe37a;
 }

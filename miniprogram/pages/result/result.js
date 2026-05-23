@@ -202,6 +202,12 @@ Page({
     selectedRecipient: '',
     selectedBudget: '',
     selectedBudgetText: '',
+    eventName: '',
+    eventDate: '',
+    profileName: '',
+    gender: '',
+    preferences: '',
+    flowerCards: [],
     recommendations: [],
     recommendationCount: 0,
     matchNote: '',
@@ -217,6 +223,11 @@ Page({
     const selectedScene = options.scene ? decodeURIComponent(options.scene) : ''
     const selectedRecipient = options.recipient ? decodeURIComponent(options.recipient) : ''
     const selectedBudget = options.budget ? decodeURIComponent(options.budget) : ''
+    const eventName = options.eventName ? decodeURIComponent(options.eventName) : selectedScene
+    const calendarEventDate = options.eventDate ? decodeURIComponent(options.eventDate) : ''
+    const profileName = options.name ? decodeURIComponent(options.name) : ''
+    const gender = options.gender ? decodeURIComponent(options.gender) : ''
+    const preferences = options.preferences ? decodeURIComponent(options.preferences) : ''
     const giftResult = buildGiftRecommendations(selectedScene, selectedRecipient, selectedBudget)
     const flowerGuide = buildFlowerGuide(selectedScene, selectedRecipient)
     const todayDate = getTodayText()
@@ -224,20 +235,25 @@ Page({
     const favoriteId = buildFavoriteId(selectedScene, selectedRecipient, selectedBudget)
     const favorites = getStoredFavorites()
     const savedFavorite = favorites.find((item) => item.id === favoriteId)
-    const eventDate = savedFavorite ? savedFavorite.eventDate : defaultEventDate
+    const plannedEventDate = savedFavorite ? savedFavorite.eventDate : (calendarEventDate || defaultEventDate)
 
     this.setData({
       selectedScene,
       selectedRecipient,
       selectedBudget,
       selectedBudgetText: formatPriceRange(selectedBudget),
+      eventName,
+      eventDate: plannedEventDate,
+      profileName,
+      gender,
+      preferences,
+      flowerCards: flowerGuide ? flowerGuide.flowers : [],
       recommendations: giftResult.recommendations,
       recommendationCount: giftResult.recommendations.length,
       matchNote: buildMatchNote(giftResult.exactCount, giftResult.recommendations.length),
       flowerGuide,
       todayDate,
-      eventDate,
-      reminderDate: getReminderDateText(eventDate),
+      reminderDate: getReminderDateText(plannedEventDate),
       favoriteSaved: Boolean(savedFavorite),
       favoriteCount: favorites.length
     })
@@ -253,6 +269,30 @@ Page({
     this.setData({
       recommendations
     })
+  },
+
+  openGiftDetail(event) {
+    const { id } = event.currentTarget.dataset
+    const query = [
+      'type=gift',
+      `id=${encodeURIComponent(id)}`,
+      `scene=${encodeURIComponent(this.data.selectedScene)}`,
+      `recipient=${encodeURIComponent(this.data.selectedRecipient)}`,
+      `name=${encodeURIComponent(this.data.profileName)}`
+    ].join('&')
+    wx.navigateTo({ url: `/pages/detail/detail?${query}` })
+  },
+
+  openFlowerDetail(event) {
+    const { id } = event.currentTarget.dataset
+    const query = [
+      'type=flower',
+      `id=${encodeURIComponent(id)}`,
+      `scene=${encodeURIComponent(this.data.selectedScene)}`,
+      `recipient=${encodeURIComponent(this.data.selectedRecipient)}`,
+      `name=${encodeURIComponent(this.data.profileName)}`
+    ].join('&')
+    wx.navigateTo({ url: `/pages/detail/detail?${query}` })
   },
 
   restartSelection() {

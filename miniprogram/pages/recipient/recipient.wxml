@@ -3,7 +3,7 @@
     <view>
       <view class="step-label">第 2 步 / 共 3 步</view>
       <view class="page-title">选择收礼人</view>
-      <view class="page-subtitle">不同关系适合的心意不一样</view>
+      <view class="page-subtitle">{{eventName}} · {{eventDate}}</view>
     </view>
   </view>
 
@@ -13,6 +13,25 @@
       <view class="selected-value">{{selectedScene || '待选择'}}</view>
     </view>
     <button class="change-button" bindtap="goBackToScene">返回修改</button>
+  </view>
+
+  <view class="group-card" wx:if="{{commonContacts.length}}">
+    <view class="group-title">
+      <text class="group-icon">⭐</text>
+      <text>常用联系人</text>
+    </view>
+    <view class="contact-list">
+      <view
+        class="contact-pill"
+        wx:for="{{commonContacts}}"
+        wx:key="id"
+        data-recipient="{{item.recipient}}"
+        data-name="{{item.name}}"
+        bindtap="handleRecipientTap"
+      >
+        {{item.name}} · {{item.recipient}}
+      </view>
+    </view>
   </view>
 
   <view class="group-list">
@@ -27,12 +46,12 @@
           class="recipient-option"
           wx:for="{{item.people}}"
           wx:for-item="person"
-          wx:key="name"
-          data-recipient="{{person.name}}"
+          wx:key="*this"
+          data-recipient="{{person}}"
           bindtap="handleRecipientTap"
         >
-          <text class="recipient-icon">{{person.icon}}</text>
-          <text class="recipient-name">{{person.name}}</text>
+          <text class="recipient-icon">{{item.icon}}</text>
+          <text class="recipient-name">{{person}}</text>
         </view>
       </view>
     </view>

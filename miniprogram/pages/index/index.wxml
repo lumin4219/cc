@@ -1,38 +1,70 @@
 <view class="page">
   <view class="hero">
     <view>
+      <view class="hero-badge">📅 礼物日历</view>
       <view class="app-name">{{title}}</view>
-      <view class="app-slogan">{{slogan}}</view>
+      <view class="app-slogan">记住重要日子，提前准备心意</view>
+      <view class="hero-tags">
+        <text>红点=节日</text>
+        <text>紫点=纪念日</text>
+      </view>
     </view>
     <navigator class="about-entry" url="/pages/about/about">关于</navigator>
+    <view class="hero-glow"></view>
   </view>
 
-  <view class="section-header">
-    <view class="section-title">先选送礼场景</view>
-    <view class="section-tip">第 1 步 / 共 3 步</view>
+  <view class="calendar-card">
+    <view class="calendar-header">
+      <button class="month-button" data-offset="-1" bindtap="changeMonth">‹</button>
+      <view>
+        <view class="calendar-title">{{monthTitle}}</view>
+        <view class="calendar-subtitle">点日期开始为 TA 选礼物</view>
+      </view>
+      <button class="month-button" data-offset="1" bindtap="changeMonth">›</button>
+    </view>
+
+    <view class="week-row">
+      <view class="week-cell" wx:for="{{weekDays}}" wx:key="*this">{{item}}</view>
+    </view>
+
+    <view class="month-grid">
+      <view
+        class="day-cell {{item.empty ? 'empty' : ''}} {{item.isToday ? 'today' : ''}}"
+        wx:for="{{monthDays}}"
+        wx:key="key"
+        data-index="{{index}}"
+        bindtap="handleDayTap"
+      >
+        <text wx:if="{{!item.empty}}">{{item.day}}</text>
+        <view class="dot-row" wx:if="{{!item.empty}}">
+          <view class="dot red" wx:if="{{item.hasFestival}}"></view>
+          <view class="dot purple" wx:if="{{item.hasAnniversary}}"></view>
+        </view>
+      </view>
+    </view>
   </view>
 
-  <view class="scene-grid">
-    <view
-      class="scene-card"
-      wx:for="{{scenes}}"
-      wx:key="name"
-      data-scene="{{item.name}}"
-      bindtap="handleSceneTap"
-    >
-      <view class="scene-icon">{{item.icon}}</view>
-      <view class="scene-name">{{item.name}}</view>
-      <view class="scene-desc">{{item.desc}}</view>
+  <view class="add-card">
+    <view class="add-summary">
+      <view>
+        <view class="add-title">我的纪念日</view>
+        <view class="add-desc">已保存 {{anniversaryCount}} 个纪念日</view>
+      </view>
+      <button class="add-button" bindtap="toggleAddPanel">{{showAddPanel ? '收起' : '添加'}}</button>
+    </view>
+    <view class="add-form" wx:if="{{showAddPanel}}">
+      <input class="form-input" placeholder="例如：我们的纪念日 / 妈妈生日" value="{{newAnniversaryName}}" bindinput="handleNameInput" />
+      <picker mode="date" value="{{newAnniversaryDate}}" bindchange="handleDateChange">
+        <view class="date-picker">日期：{{newAnniversaryDate || '请选择'}}</view>
+      </picker>
+      <button class="save-button" bindtap="saveAnniversary">保存纪念日</button>
     </view>
   </view>
 
   <view class="festival-card">
-    <view class="festival-title">
-      <text>🎀</text>
-      <text>最近节日提醒</text>
-    </view>
+    <view class="festival-title">⏰ 即将到来</view>
     <view class="festival-list">
-      <view class="festival-item" wx:for="{{upcomingFestivals}}" wx:key="name">
+      <view class="festival-item" wx:for="{{upcomingEvents}}" wx:key="id" data-index="{{index}}" bindtap="handleUpcomingTap">
         <view class="festival-main">
           <text class="festival-icon">{{item.icon}}</text>
           <text class="festival-name">{{item.name}}</text>

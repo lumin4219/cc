@@ -1,0 +1,87 @@
+.detail-hero,
+.detail-card {
+  padding: 34rpx;
+  border: 2rpx solid rgba(255, 216, 77, 0.44);
+  border-radius: 36rpx;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18rpx 42rpx rgba(255, 95, 162, 0.14);
+}
+
+.detail-hero {
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff5fa2, #ff8ac0 60%, #ffd84d 140%);
+}
+
+.detail-hero .page-title,
+.detail-hero .page-subtitle {
+  color: #ffffff;
+}
+
+.detail-badge {
+  display: inline-flex;
+  margin-bottom: 12rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #8a4a00;
+  font-size: 24rpx;
+  font-weight: 800;
+  background: #ffe37a;
+}
+
+.detail-card {
+  margin-top: 28rpx;
+}
+
+.section-title {
+  margin-top: 30rpx;
+  color: #321d2c;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.section-title:first-child {
+  margin-top: 0;
+}
+
+.detail-text {
+  margin-top: 14rpx;
+  color: #7b4b61;
+  font-size: 27rpx;
+  line-height: 1.8;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12rpx;
+}
+
+.chip {
+  margin: 10rpx 10rpx 0 0;
+  padding: 12rpx 18rpx;
+  border-radius: 999rpx;
+  color: #ff4f99;
+  font-size: 24rpx;
+  font-weight: 800;
+  background: #fff0b8;
+}
+
+.buy-button {
+  height: 92rpx;
+  margin-top: 34rpx;
+  border-radius: 999rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 900;
+  line-height: 92rpx;
+  background: linear-gradient(135deg, #ff5fa2, #ff8ac0);
+  box-shadow: 0 14rpx 30rpx rgba(255, 95, 162, 0.28);
+}
+
+.safe-note {
+  margin-top: 18rpx;
+  color: #a05b76;
+  font-size: 24rpx;
+  line-height: 1.6;
+  text-align: center;
+}
