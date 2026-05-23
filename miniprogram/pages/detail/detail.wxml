@@ -1,31 +1,29 @@
 <view class="page">
   <view class="detail-hero">
-    <view class="detail-badge">{{type === 'flower' ? '花束详情' : '礼物详情'}}</view>
+    <view class="detail-badge">{{detailTypeLabel}}</view>
     <view class="page-title">{{title}}</view>
-    <view class="page-subtitle">送给 {{name || recipient}} · {{scene}}</view>
+    <view class="page-subtitle">送给 {{displayName}} · {{scene}}</view>
   </view>
 
   <view class="detail-card" wx:if="{{item}}">
-    <view class="section-title">{{type === 'flower' ? '花语' : '推荐理由'}}</view>
-    <view class="detail-text">{{type === 'flower' ? item.language : item.reason}}</view>
+    <view class="section-title">{{primaryTitle}}</view>
+    <view class="detail-text">{{primaryText}}</view>
 
     <view class="section-title">适用场景</view>
     <view class="chip-row">
-      <view class="chip" wx:if="{{type === 'flower'}}">{{scene}}</view>
-      <view class="chip" wx:else wx:for="{{item.scenes}}" wx:key="*this">{{item}}</view>
+      <view class="chip" wx:for="{{sceneChips}}" wx:key="*this">{{item}}</view>
     </view>
 
     <view class="section-title">适合送谁</view>
     <view class="chip-row">
-      <view class="chip" wx:if="{{type === 'flower'}}" wx:for="{{item.suitable_recipients}}" wx:key="*this">{{item}}</view>
-      <view class="chip" wx:else wx:for="{{item.recipients}}" wx:key="*this">{{item}}</view>
+      <view class="chip" wx:for="{{recipientChips}}" wx:key="*this">{{item}}</view>
     </view>
 
     <view class="section-title">搭配推荐</view>
-    <view class="detail-text">{{type === 'flower' ? item.tips : item.tips}}</view>
+    <view class="detail-text">{{pairingText}}</view>
 
     <view class="section-title">注意事项</view>
-    <view class="detail-text">{{item.taboo}}</view>
+    <view class="detail-text">{{cautionText}}</view>
   </view>
 
   <view class="detail-card" wx:else>

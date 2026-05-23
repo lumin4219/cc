@@ -16,8 +16,16 @@ Page({
     scene: '',
     recipient: '',
     name: '',
+    displayName: '',
     title: '',
-    keyword: ''
+    keyword: '',
+    detailTypeLabel: '',
+    primaryTitle: '',
+    primaryText: '',
+    sceneChips: [],
+    recipientChips: [],
+    pairingText: '',
+    cautionText: ''
   },
 
   onLoad(options) {
@@ -29,6 +37,7 @@ Page({
     const item = type === 'flower'
       ? findFlower(scene, id)
       : gifts.find((gift) => gift.id === id)
+    const isFlower = type === 'flower'
 
     this.setData({
       type,
@@ -36,8 +45,16 @@ Page({
       scene,
       recipient,
       name,
+      displayName: name || recipient,
       title: item ? item.name : '推荐详情',
-      keyword: item ? `${item.name} ${scene} 礼物` : ''
+      keyword: item ? `${item.name} ${scene} 礼物` : '',
+      detailTypeLabel: isFlower ? '花束详情' : '礼物详情',
+      primaryTitle: isFlower ? '花语' : '推荐理由',
+      primaryText: item ? (isFlower ? item.language : item.reason) : '',
+      sceneChips: item ? (isFlower ? [scene] : item.scenes) : [],
+      recipientChips: item ? (isFlower ? item.suitable_recipients : item.recipients) : [],
+      pairingText: item ? item.tips : '',
+      cautionText: item ? item.taboo : ''
     })
   },
 
