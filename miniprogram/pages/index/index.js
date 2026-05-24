@@ -10,6 +10,24 @@ const fixedEvents = [
   { id: 'festival_spring', name: '春节', scene: '春节', month: 2, day: 17, icon: '🧧', type: 'festival' }
 ]
 
+const sceneChoices = [
+  { name: '生日', scene: '生日', icon: '🎂', type: 'custom' },
+  { name: '恋爱/结婚纪念日', scene: '结婚纪念日', icon: '💍', type: 'custom' },
+  { name: '情人节', scene: '情人节', icon: '🌹', type: 'festival' },
+  { name: '母亲节', scene: '母亲节', icon: '💐', type: 'festival' },
+  { name: '父亲节', scene: '父亲节', icon: '👔', type: 'festival' },
+  { name: '教师节', scene: '教师节', icon: '📚', type: 'festival' },
+  { name: '春节', scene: '春节', icon: '🧧', type: 'festival' },
+  { name: '中秋', scene: '中秋', icon: '🥮', type: 'festival' },
+  { name: '圣诞节', scene: '圣诞节', icon: '🎄', type: 'festival' },
+  { name: '毕业季', scene: '毕业季', icon: '🎓', type: 'custom' },
+  { name: '乔迁新居', scene: '乔迁新居', icon: '🏠', type: 'custom' },
+  { name: '宝宝满月', scene: '宝宝满月', icon: '👶', type: 'custom' },
+  { name: '感谢', scene: '感谢', icon: '🎁', type: 'custom' },
+  { name: '道歉', scene: '道歉', icon: '🤝', type: 'custom' },
+  { name: '更多场景', scene: '更多场景', icon: '✨', type: 'custom' }
+]
+
 function pad(value) {
   return String(value).padStart(2, '0')
 }
@@ -103,6 +121,35 @@ function getCurrentEventFromDay(day) {
   }
 }
 
+function buildSceneOptions(date, events) {
+  const options = []
+  const usedScenes = {}
+
+  events.forEach((event) => {
+    const option = {
+      ...event,
+      date,
+      label: event.type === 'festival' ? '日历节日' : '我的纪念日'
+    }
+    options.push(option)
+    usedScenes[option.scene] = true
+  })
+
+  sceneChoices.forEach((choice) => {
+    if (usedScenes[choice.scene]) {
+      return
+    }
+    options.push({
+      ...choice,
+      id: `${choice.scene}_${date}`,
+      date,
+      label: choice.type === 'festival' ? '节日' : '自定义'
+    })
+  })
+
+  return options
+}
+
 Page({
   data: {
     title: '送了莫',
@@ -113,6 +160,10 @@ Page({
     monthDays: [],
     upcomingEvents: [],
     selectedEvent: null,
+    selectedDate: '',
+    selectedDateTitle: '',
+    sceneOptions: [],
+    showScenePanel: false,
     showAddPanel: false,
     newAnniversaryName: '',
     newAnniversaryDate: '',
@@ -154,14 +205,42 @@ Page({
     if (!day || day.empty) {
       return
     }
-    const selectedEvent = getCurrentEventFromDay(day)
-    this.setData({ selectedEvent })
-    this.goRecipient(selectedEvent)
+    this.openScenePanel(day.date, day.events || [])
   },
 
   handleUpcomingTap(event) {
     const { index } = event.currentTarget.dataset
     const selectedEvent = this.data.upcomingEvents[index]
+    if (!selectedEvent) {
+      return
+    }
+    this.openScenePanel(selectedEvent.dateText || selectedEvent.date, [selectedEvent])
+  },
+
+  openScenePanel(date, events) {
+    const sceneOptions = buildSceneOptions(date, events)
+    this.setData({
+      selectedDate: date,
+      selectedDateTitle: `${date} 是什么日子？`,
+      sceneOptions,
+      showScenePanel: true,
+      selectedEvent: null
+    })
+  },
+
+  closeScenePanel() {
+    this.setData({
+      showScenePanel: false,
+      selectedEvent: null
+    })
+  },
+
+  handleSceneChoiceTap(event) {
+    const { index } = event.currentTarget.dataset
+    const selectedEvent = this.data.sceneOptions[index]
+    if (!selectedEvent) {
+      return
+    }
     this.setData({ selectedEvent })
     this.goRecipient(selectedEvent)
   },
@@ -170,7 +249,7 @@ Page({
     const query = [
       `scene=${encodeURIComponent(event.scene || event.name)}`,
       `eventName=${encodeURIComponent(event.name)}`,
-      `eventDate=${encodeURIComponent(event.dateText || event.date)}`,
+      `eventDate=${encodeURIComponent(event.dateText || event.date || this.data.selectedDate)}`,
       `eventType=${encodeURIComponent(event.type)}`
     ].join('&')
     wx.navigateTo({ url: `/pages/recipient/recipient?${query}` })

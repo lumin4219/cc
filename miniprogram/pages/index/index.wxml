@@ -44,6 +44,33 @@
     </view>
   </view>
 
+  <view class="scene-picker-card" wx:if="{{showScenePanel}}">
+    <view class="scene-picker-header">
+      <view>
+        <view class="scene-picker-title">{{selectedDateTitle}}</view>
+        <view class="scene-picker-desc">先选这一天的场景，再选择收礼人</view>
+      </view>
+      <button class="scene-close-button" bindtap="closeScenePanel">×</button>
+    </view>
+
+    <view class="scene-option-list">
+      <view
+        class="scene-option"
+        wx:for="{{sceneOptions}}"
+        wx:key="id"
+        data-index="{{index}}"
+        bindtap="handleSceneChoiceTap"
+      >
+        <view class="scene-option-icon">{{item.icon}}</view>
+        <view class="scene-option-main">
+          <view class="scene-option-name">{{item.name}}</view>
+          <view class="scene-option-label">{{item.label}} · {{item.scene}}</view>
+        </view>
+        <view class="scene-option-arrow">›</view>
+      </view>
+    </view>
+  </view>
+
   <view class="add-card">
     <view class="add-summary">
       <view>
